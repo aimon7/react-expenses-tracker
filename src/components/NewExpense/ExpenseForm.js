@@ -1,7 +1,7 @@
 import './ExpenseForm.css';
 import { useState } from 'react';
 
-function ExpenseForm() {
+function ExpenseForm(props) {
     const initialState = {
         title: '',
         amount: '',
@@ -50,8 +50,8 @@ function ExpenseForm() {
     function submitHandler(event) {
         event.preventDefault();
 
-        const dataToSubmit = state;
-        console.log(dataToSubmit);
+        // const dataToSubmit = state;
+        props.onSaveExpenseData(state);
         setState(initialState);
     }
 
