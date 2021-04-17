@@ -13,7 +13,7 @@ function ExpenseItem(props) {
     function clickHandler() {
         setState({
             ...state,
-            title: `Updated!`
+            title: state.title === `Updated!` ? props.title : `Updated!`
         })
     }
 
