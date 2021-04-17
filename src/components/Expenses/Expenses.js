@@ -10,7 +10,7 @@ function Expenses(props) {
     };
     const [state, setState] = useState(initialState);
 
-    function onYearChange(year){
+    function onYearChangeHandler(year){
         setState((prevState) => {
             return {
                 ...prevState,
@@ -19,13 +19,17 @@ function Expenses(props) {
         });
     }
 
-    const expenseItems = props.expenses.map((item) => {
+    const expensesByYear = props.expenses.filter(expense => {
+        return expense.date.getFullYear().toString() === state.year;
+    });
+
+    const expenseItems = expensesByYear.map((item) => {
         return <ExpenseItem key={item.id} title={item.title} amount={item.amount} date={item.date}/>
     });
 
     return (
         <Card className="expenses">
-            <ExpensesFilter defaultValue={state.year} onChangeYear={onYearChange}/>
+            <ExpensesFilter defaultValue={state.year} onChangeYear={onYearChangeHandler}/>
             {expenseItems}
         </Card>
     )
