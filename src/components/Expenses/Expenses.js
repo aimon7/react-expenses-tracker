@@ -17,7 +17,7 @@ function Expenses(props) {
                 year: year,
             };
         });
-    };
+    }
 
     const expenseItems = props.expenses.map((item, index) => {
         return <ExpenseItem key={index} title={item.title} amount={item.amount} date={item.date}/>

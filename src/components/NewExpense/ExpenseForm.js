@@ -11,14 +11,14 @@ function ExpenseForm(props) {
     const [state, setState] = useState(initialState);
 
     // Todo: There should be a way to make all 3 to one function
-    function inputChangeHandler(event) {
-        setState((prevState) => {
-            return {
-                ...prevState,
-                inputType: event.target.value,
-            };
-        });
-    }
+    // function inputChangeHandler(event) {
+    //     setState((prevState) => {
+    //         return {
+    //             ...prevState,
+    //             inputType: event.target.value,
+    //         };
+    //     });
+    // }
 
     function titleChangeHandler(event) {
         setState((prevState) => {
@@ -56,7 +56,7 @@ function ExpenseForm(props) {
     }
 
     return (
-        <form>
+        <form onSubmit={submitHandler}>
             <div className="new-expense__controls">
                 <div className="new-expense__control">
                     <label>Title</label>
@@ -73,7 +73,7 @@ function ExpenseForm(props) {
                 </div>
             </div>
             <div className="new-expense__actions">
-                <button type="submit" onClick={submitHandler}>Add Expense</button>
+                <button type="submit">Add Expense</button>
             </div>
         </form>
     )
