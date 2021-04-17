@@ -31,7 +31,7 @@ function App() {
         expense.date = new Date(expense.date);
 
         setExpenses((prevState) => {
-           return [...prevState, expense];
+           return [expense, ...prevState];
         });
     }
 
