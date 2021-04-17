@@ -1,4 +1,4 @@
-import ExpenseItem from './ExpenseItem';
+import ExpensesList from './ExpensesList';
 import Card from '../UI/Card';
 import './Expenses.css';
 import ExpensesFilter from './ExpensesFilter';
@@ -10,7 +10,7 @@ function Expenses(props) {
     };
     const [state, setState] = useState(initialState);
 
-    function onYearChangeHandler(year){
+    function onYearChangeHandler(year) {
         setState((prevState) => {
             return {
                 ...prevState,
@@ -23,14 +23,10 @@ function Expenses(props) {
         return expense.date.getFullYear().toString() === state.year;
     });
 
-    const expenseItems = expensesByYear.map((item) => {
-        return <ExpenseItem key={item.id} title={item.title} amount={item.amount} date={item.date}/>
-    });
-
     return (
         <Card className="expenses">
             <ExpensesFilter defaultValue={state.year} onChangeYear={onYearChangeHandler}/>
-            {expenseItems}
+            <ExpensesList expenses={expensesByYear} />
         </Card>
     )
 }
