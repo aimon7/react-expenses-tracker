@@ -11,10 +11,12 @@ function ExpenseItem(props) {
     });
 
     function clickHandler() {
-        setState({
-            ...state,
-            title: state.title === `Updated!` ? props.title : `Updated!`
-        })
+        setState((prevState) => {
+            return {
+                ...prevState,
+                title: state.title === `Updated!` ? props.title : `Updated!`
+            };
+        });
     }
 
     return (
